@@ -5,270 +5,140 @@
     <description>Write your site description here. It will be used as your sites meta description as well!</description>
     <link>http://bitbetter.se/</link>
     <atom:link href="http://bitbetter.se/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 28 Feb 2015 00:27:12 -0800</pubDate>
-    <lastBuildDate>Sat, 28 Feb 2015 00:27:12 -0800</lastBuildDate>
+    <pubDate>Sat, 28 Feb 2015 11:26:56 -0800</pubDate>
+    <lastBuildDate>Sat, 28 Feb 2015 11:26:56 -0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
-        <title>Man must explore, and this is exploration at its greatest</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
+        <title>Moving from Heroku to Digital Ocean</title>
+        <description>&lt;p&gt;{&amp;lt;1&amp;gt;}&lt;img src=&quot;/content/images/2013/Oct/digital_ocean_logo_1200x900.png&quot; alt=&quot;DigitalOcean logo&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
+&lt;h2 id=&quot;why-heroku&quot;&gt;Why Heroku?&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://heroku.com&quot;&gt;Heroku&lt;/a&gt; is fantastic. I’ve been using it for years. It’s reliable and hides all the stuff  that you don’t want to worry about as an app developer (failover, load balancing, process monitoring, backups, security patches, etc, etc).&lt;/p&gt;
 
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
+&lt;h2 id=&quot;why-not-heroku&quot;&gt;Why NOT Heroku?&lt;/h2&gt;
+&lt;p&gt;Heroku can be expensive.&lt;/p&gt;
 
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
+&lt;p&gt;To run a Rails app with 1 GB RAM ($34), a database ($9), a worker thread ($34) and SSL support ($20) will cost &lt;strong&gt;$97 per month on Heroku&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
+&lt;p&gt;If you have a profitable app with many paying customers that is probably ok. I’d say it is worth $97 per month not having to worry about servers and instead focus on your what’s more important - your apps, customers and business.&lt;/p&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
+&lt;p&gt;But what if your app is not making any money yet? And what if you have many apps like this?&lt;/p&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;p&gt;If you know your way around a server, and have some time to configure and maintain it, you can save some money by doing it yourself.&lt;/p&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;h2 id=&quot;why-digitalocean&quot;&gt;Why DigitalOcean?&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.digitalocean.com/?refcode=138e6c803d00&quot;&gt;DigitalOcean&lt;/a&gt; is a relatively new cloud server provider (started 2012) and it has been getting a lot of attention due to its all SSD storage and low priced servers starting at $5 per month.&lt;/p&gt;
 
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
+&lt;p&gt;To run a Rails app like the example above, 2GB RAM should be enough. That will be &lt;strong&gt;$20 per month on DigitalOcean&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
+&lt;p&gt;To compare, 2 GB of RAM would cost $40 per month on &lt;a href=&quot;https://www.linode.com/?r=f818067ccf38443121c95f2554c6031c51659031&quot;&gt;Linode&lt;/a&gt;, and $44 per month on &lt;a href=&quot;http://aws.amazon.com/ec2/pricing/#on-demand&quot;&gt;Amazon EC2&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
+&lt;p&gt;Please note that I am not taking storage, bandwith, transfer costs or support level into account here. If you have special needs this needs to be factored in.&lt;/p&gt;
 
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
+&lt;h2 id=&quot;performance-comparison&quot;&gt;Performance comparison&lt;/h2&gt;
+&lt;p&gt;I compared load times from the &lt;strong&gt;app with same source code&lt;/strong&gt; running on Heroku and DigitalOcean. I did 30 requests to each service to get the load time of a page. The page did a few database queries per load.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Surprisingly, &lt;strong&gt;DigitalOcean has 40-50% faster load times&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
+&lt;h4 id=&quot;heroku&quot;&gt;Heroku&lt;/h4&gt;
+&lt;p&gt;Min: 		0.538s
+  Max: 		1.175s
+  Average:	0.811s&lt;/p&gt;
 
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
+&lt;h4 id=&quot;digitalocean&quot;&gt;DigitalOcean&lt;/h4&gt;
+&lt;p&gt;Min: 		0.248s
+  Max: 		0.798s
+  Average:	0.502s&lt;/p&gt;
 
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;If you:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Have an app without enough paying users&lt;/li&gt;
+  &lt;li&gt;Have the time to set up a Linux server&lt;/li&gt;
+  &lt;li&gt;Think fiddling with servers is &lt;strong&gt;awesome&lt;/strong&gt;!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then YES, a move to &lt;a href=&quot;https://www.digitalocean.com/?refcode=138e6c803d00&quot;&gt;DigitalOcean&lt;/a&gt; can save you money today! If you use &lt;a href=&quot;https://www.digitalocean.com/?refcode=138e6c803d00&quot;&gt;this link&lt;/a&gt; you get a $10 credit!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;If you like this you should &lt;a href=&quot;https://twitter.com/martinkretz&quot;&gt;follow me on Twitter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: I included affiliate links to DigitalOcean and Linode. It does not affect my opinions or recommendations of those services. Use the links if you want to support future blog posts like this.&lt;/em&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 24 Sep 2014 05:00:00 -0700</pubDate>
-        <link>http://bitbetter.se/2014/09/24/man-must-explore/</link>
-        <guid isPermaLink="true">http://bitbetter.se/2014/09/24/man-must-explore/</guid>
+        <pubDate>Wed, 30 Oct 2013 05:00:00 -0700</pubDate>
+        <link>http://bitbetter.se/2013/10/30/moving-from-heroku-to-digital-ocean/</link>
+        <guid isPermaLink="true">http://bitbetter.se/2013/10/30/moving-from-heroku-to-digital-ocean/</guid>
         
         
       </item>
     
       <item>
-        <title>I believe every human has a finite number of heartbeats. I don&#39;t intend to waste any of mine.</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
+        <title>Android Income Report 2011</title>
+        <description>&lt;p&gt;{&amp;lt;1&amp;gt;}&lt;img src=&quot;/content/images/2013/Oct/image_screen_results.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
+&lt;h2 id=&quot;what-is-runstar&quot;&gt;What is runstar?&lt;/h2&gt;
+&lt;p&gt;The runstar™ application can best be described as a running application for Android with a focus on simplicity and nice graphics. You can get more details about the app here.&lt;/p&gt;
 
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
+&lt;p&gt;The app was coded by me, in my company Bitbetter, and designed by my friends over at Color Monkey. We launched the free version at the end of 2009, then we took a short break, and launched the paid version with more features early 2011.&lt;/p&gt;
 
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;&lt;em&gt;free version has had 330 000 downloads with 23% active users&lt;/em&gt;&lt;/strong&gt;. The free version has no income streams, but I still included it to show the amount of downloads, since they convert over to the paid app. Currently the conversion rate is 2.3%. However, that number is actually too low, since the free version has been downloading for more than a year more.&lt;/p&gt;
 
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
+&lt;p&gt;The paid version has had 8 000 downloads with 73% active users. It is priced at $4.99 and we have not changed the price during this time.&lt;/p&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;During 2011 we made $24 800 in revenue.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;h2 id=&quot;earnings-in-2011&quot;&gt;Earnings in 2011&lt;/h2&gt;
+&lt;p&gt;The chart shows the accumulated revenue for the paid version of the runstar™ app.&lt;/p&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;p&gt;If you look closely, you see a few distinct places where the the line bends up or down. Those places coincide with certain events that proved to have a large impact on sales.&lt;/p&gt;
 
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
+&lt;p&gt;{&amp;lt;2&amp;gt;}&lt;img src=&quot;/content/images/2013/Oct/runstar_revenue_2011.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
+&lt;h3 id=&quot;integrated-with-runkeeper-and-dailymile---june-23&quot;&gt;Integrated with RunKeeper and Dailymile - June 23&lt;/h3&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
+&lt;p&gt;On June 23, runstar™ released a new version of the paid app that supported logging into and uploading all runs from the runstar™ app to RunKeeper and Dailymile. This was also mentioned in a blog post here. And it was also twittered about here.&lt;/p&gt;
 
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
+&lt;p&gt;RunKeeper has a great iPhone and Android app. RunKeeper also built a platform to hold data, which they later opened up for third party users, like runstar™. Dailymile is another great looking and easy-to-use open running platform that has been around for a while.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Uploading runs online was a very requested feature that we did not have the time to develop ourselves. So when this was released, we saw a 100% increase in sales, and looking at the chart you will see that the line is a bit steeper (=increased daily sales) after June 23.&lt;/p&gt;
 
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
+&lt;p&gt;I’m pretty sure that the boost we saw was not only from just adding new features, but also hooking into the Dailymile and RunKeeper networks.&lt;/p&gt;
 
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
+&lt;h3 id=&quot;featured-on-android-market---october-8&quot;&gt;Featured on Android Market - October 8&lt;/h3&gt;
+&lt;p&gt;On October 8 I found runstar™ featured on Android Market. Amazing! We saw an immediate surge in downloads and it is pretty obvious on the chart when that happened. Our revenue increased with 1000% that first week.&lt;/p&gt;
 
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Yep, you heard me right. &lt;strong&gt;One. Thousand. Percent.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are interested in the details then read my other post on getting featured on Android Market.&lt;/p&gt;
+
+&lt;h3 id=&quot;drops-off-android-market-top-25-list---november-17&quot;&gt;Drops off Android Market top 25 list - November 17&lt;/h3&gt;
+&lt;p&gt;As with all good things, they come to an end. Also the crazy runstar™ sales. On November 17 runstar™ dropped off the top 25 list in the health category on Android Market, which brought the sales back to pre-getting-featured-on-Android-Market-levels.&lt;/p&gt;
+
+&lt;p&gt;If I was a bit more prepared here, we could have done a sale or something to keep us up there, but we will save that for later.&lt;/p&gt;
+
+&lt;h2 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h2&gt;
+&lt;p&gt;Launching the paid version of runstar™ has taught me a few things:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;An app is not a company.&lt;/em&gt;&lt;/strong&gt; If you want to make a living from mobile apps, either build a platform and service with an app promoting it. Or build multiple apps. One app is not enough for me to live on, anyway.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Apps don’t sell themselves.&lt;/em&gt;&lt;/strong&gt; Well, they actually do, but not as fast as they could. So any activity that exposes your app to new people, e.g. hooking it into Facebook or getting featured in an app store, was super important for me.&lt;/p&gt;
+
+&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h2&gt;
+&lt;p&gt;Even though it did not make me rich, I’m happy with runstar™’s first year. It made $24 800 in nine months, got featured in Android Market, and received tons of positive feedback from users.&lt;/p&gt;
+
+&lt;p&gt;But for 2012 I want to step it up a notch. My goal is to reach $50 000 for the year. It probably means some extra marketing activities. And possibly adding some features. And most likely introducing ads in some way.&lt;/p&gt;
+
+&lt;p&gt;I never thought ads could be a good source of revenue, but is seems to be working for Droid-Blog, KreCi and Making Money With Android. Very inspired by those guys, and I’ll try it out for runstar™.&lt;/p&gt;
+
+&lt;p&gt;Stay tuned for more reports,
+Martin&lt;/p&gt;
 </description>
-        <pubDate>Thu, 18 Sep 2014 05:00:00 -0700</pubDate>
-        <link>http://bitbetter.se/2014/09/18/i-believe/</link>
-        <guid isPermaLink="true">http://bitbetter.se/2014/09/18/i-believe/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Science has not yet mastered prophecy</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
-
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
-
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
-
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
-
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
-
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
-
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
-
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
-
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 24 Aug 2014 05:00:00 -0700</pubDate>
-        <link>http://bitbetter.se/2014/08/24/science-has-not-yet-mastered-prophecy/</link>
-        <guid isPermaLink="true">http://bitbetter.se/2014/08/24/science-has-not-yet-mastered-prophecy/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Failure is not an option</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
-
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
-
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
-
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
-
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
-
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
-
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
-
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
-
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 08 Jul 2014 05:00:00 -0700</pubDate>
-        <link>http://bitbetter.se/2014/07/08/failure-is-not-an-option/</link>
-        <guid isPermaLink="true">http://bitbetter.se/2014/07/08/failure-is-not-an-option/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>The dreams of yesterday are the hopes of today and the reality of tomorrow.</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
-
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
-
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
-
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
-
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
-
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
-
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
-
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
-
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 01 Jul 2014 05:00:00 -0700</pubDate>
-        <link>http://bitbetter.se/2014/07/01/dreams/</link>
-        <guid isPermaLink="true">http://bitbetter.se/2014/07/01/dreams/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Dinosaurs are extinct today</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
-
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
-
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
-
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
-
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
-
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
-
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
-
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
-
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 10 Jun 2014 05:00:00 -0700</pubDate>
-        <link>http://bitbetter.se/2014/06/10/dinosaurs/</link>
-        <guid isPermaLink="true">http://bitbetter.se/2014/06/10/dinosaurs/</guid>
+        <pubDate>Wed, 08 Feb 2012 04:00:00 -0800</pubDate>
+        <link>http://bitbetter.se/2012/02/08/android-income-report-2011/</link>
+        <guid isPermaLink="true">http://bitbetter.se/2012/02/08/android-income-report-2011/</guid>
         
         
       </item>
